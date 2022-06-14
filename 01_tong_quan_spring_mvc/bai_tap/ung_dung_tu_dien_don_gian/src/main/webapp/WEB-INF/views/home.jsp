@@ -8,7 +8,7 @@
 </head>
 <body>
 <div >
-<form action="/tudien" method="post" >
+<form action="/dictionary" method="post" >
     <h2> Từ điển  </h2>
     <input type="text" name="name" placeholder="Nhập từ" >
 <%--    <p>Kết quả: ${name} </p>--%>

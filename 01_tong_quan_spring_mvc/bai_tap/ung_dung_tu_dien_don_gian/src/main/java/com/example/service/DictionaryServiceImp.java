@@ -13,7 +13,7 @@ public class DictionaryServiceImp {
 
     public static String late(String world) {
         for (Map.Entry<String, String> item : map.entrySet()) {
-            if (item.getKey().contains(world) && item.getKey()!= null ) {
+            if (item.getKey().equals(world) ) {
                 return item.getValue();
             }
         }

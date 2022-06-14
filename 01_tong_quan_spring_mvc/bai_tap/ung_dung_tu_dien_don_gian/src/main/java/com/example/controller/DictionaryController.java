@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class DictionaryController {
-    @GetMapping("/tudien")
-    public String greeting() {
+    @GetMapping("/dictionary")
+    public String getDictionary() {
         return "home";
     }
-    @PostMapping("/tudien")
-    public String greetingLate(@RequestParam String name, Model model) {
+    @PostMapping("/dictionary")
+    public String postDictionary(@RequestParam String name, Model model) {
         model.addAttribute("name",DictionaryServiceImp.late(name));
         return "home";
     }

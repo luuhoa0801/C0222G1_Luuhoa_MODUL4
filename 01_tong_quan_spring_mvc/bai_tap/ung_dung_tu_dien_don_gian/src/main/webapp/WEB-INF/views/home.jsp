@@ -10,9 +10,9 @@
 <div >
 <form action="/dictionary" method="post" >
     <h2> Từ điển  </h2>
-    <input type="text" name="name" placeholder="Nhập từ" >
+    <input type="text" name="world" placeholder="Nhập từ"  >
 <%--    <p>Kết quả: ${name} </p>--%>
-    <input type="text" value="${name}">
+    <input type="text" value="${result}">
     <button> Dịch</button>
 </form>
 </div>

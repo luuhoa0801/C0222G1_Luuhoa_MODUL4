@@ -12,16 +12,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class CalculatorController {
     @Autowired
     private ICalculatorService iCalculatorService;
+
     @GetMapping("/calculator")
     public String getCalculator() {
         return "home";
     }
+
     @PostMapping("/calculator")
-    public String postCalculator(@RequestParam(name = "number1")double number1,
-                                @RequestParam(name = "number2")double number2,
-                                @RequestParam(name = "check")char check,
-                                Model model) {
-        model.addAttribute("result", iCalculatorService.calculator(number1,number2,check));
+    public String postCalculator(@RequestParam(name = "number1") double number1,
+                                 @RequestParam(name = "number2") double number2,
+                                 @RequestParam(name = "check") char check,
+                                 Model model) {
+        model.addAttribute("result", iCalculatorService.calculator(number1, number2, check));
 
         return "home";
     }

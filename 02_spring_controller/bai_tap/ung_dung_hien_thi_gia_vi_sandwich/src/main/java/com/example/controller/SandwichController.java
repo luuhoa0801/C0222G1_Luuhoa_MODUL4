@@ -16,7 +16,7 @@ public class SandwichController {
     }
 
     @PostMapping("/save")
-    public String save(@RequestParam(name = "check" ,required = false) String[] condiment, Model model) {
+    public String save(@RequestParam(name = "check" ,required = false,defaultValue = "Chưa chọn gì cả") String[] condiment, Model model) {
         model.addAttribute("result", Arrays.toString(condiment));
         return "save";
     }

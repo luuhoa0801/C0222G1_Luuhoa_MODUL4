@@ -1,6 +1,8 @@
 package com.example.controller;
 
 import com.example.model.Email;
+import com.example.service.IEmailService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,13 +11,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class EmailController {
+    @Autowired
+    private IEmailService iEmailService;
+
     @GetMapping("/email")
     public String showForm(Model model) {
         model.addAttribute("email", new Email());
-        String[] languages = new String[]{"English", "Vietnamese", "Japanese", "Chinese"};
-        int[] size = new int[]{5, 10, 15, 25, 50, 100};
-        model.addAttribute("listLanguages", languages);
-        model.addAttribute("listSize", size);
+        model.addAttribute("listLanguages", iEmailService.listLanguages());
+        model.addAttribute("listSize", iEmailService.listSize());
         return "create";
     }
 

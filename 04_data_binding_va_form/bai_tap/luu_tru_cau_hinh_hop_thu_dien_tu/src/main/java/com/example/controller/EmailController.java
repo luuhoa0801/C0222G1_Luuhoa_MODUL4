@@ -14,6 +14,7 @@ public class EmailController {
     @Autowired
     private IEmailService iEmailService;
 
+
     @GetMapping("/email")
     public String showForm(Model model) {
         model.addAttribute("email", new Email());

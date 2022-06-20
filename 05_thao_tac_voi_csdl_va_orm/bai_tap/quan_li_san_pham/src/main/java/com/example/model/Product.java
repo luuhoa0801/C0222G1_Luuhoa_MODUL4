@@ -16,6 +16,7 @@ public class Product {
     @ColumnDefault("0")
     @Column(name = "status_delete")
     private int statusDelete;
+
     public Product() {
     }
 

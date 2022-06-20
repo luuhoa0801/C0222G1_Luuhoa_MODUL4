@@ -43,7 +43,7 @@ public class ProductRepository implements IProductRepository {
     public void delete(int id) {
         EntityTransaction entityTransaction = BaseRepository.entityManager.getTransaction();
         entityTransaction.begin();
-        Product product =findById(id);
+        Product product = findById(id);
         product.setStatusDelete(1);
         BaseRepository.entityManager.merge(product);
         entityTransaction.commit();
@@ -52,7 +52,7 @@ public class ProductRepository implements IProductRepository {
     @Override
     public List<Product> searchByName(String name) {
         List<Product> searchList = BaseRepository.entityManager.createQuery
-                ("select p from product p where name like ?1 ",Product.class).setParameter(1,"%"+name+"%").getResultList();
+                ("select p from product p where name like ?1 ", Product.class).setParameter(1, "%" + name + "%").getResultList();
         return searchList;
     }
 }

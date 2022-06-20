@@ -5,13 +5,14 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityTransaction;
 import java.util.List;
+
 @Repository
 public class MusicRepository implements IMusicRepository {
 
     @Override
     public List<Music> findAll() {
         List<Music> listMusic = BaseRepository.entityManager.createQuery
-                ("select m from music m where status = 0",Music.class).getResultList();
+                ("select m from music m where status = 0", Music.class).getResultList();
         return listMusic;
     }
 
@@ -26,7 +27,7 @@ public class MusicRepository implements IMusicRepository {
     @Override
     public Music findById(int id) {
         Music music = BaseRepository.entityManager.createQuery
-                ("select m from music m where id=?1",Music.class).setParameter(1,id).getSingleResult();
+                ("select m from music m where id=?1", Music.class).setParameter(1, id).getSingleResult();
         return music;
     }
 
@@ -42,7 +43,7 @@ public class MusicRepository implements IMusicRepository {
     public void delete(int id) {
         EntityTransaction entityTransaction = BaseRepository.entityManager.getTransaction();
         entityTransaction.begin();
-        Music music =findById(id);
+        Music music = findById(id);
         music.setStatus(1);
         BaseRepository.entityManager.merge(music);
         entityTransaction.commit();
@@ -51,7 +52,7 @@ public class MusicRepository implements IMusicRepository {
     @Override
     public List<Music> searchByName(String name) {
         List<Music> searchList = BaseRepository.entityManager.createQuery
-                ("select m from music m where name like ?1 ",Music.class).setParameter(1,"%"+name+"%").getResultList();
+                ("select m from music m where name like ?1 ", Music.class).setParameter(1, "%" + name + "%").getResultList();
         return searchList;
     }
 

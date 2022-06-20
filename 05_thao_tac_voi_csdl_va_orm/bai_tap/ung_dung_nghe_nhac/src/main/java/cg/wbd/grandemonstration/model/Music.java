@@ -15,6 +15,7 @@ public class Music {
     private String url;
     @ColumnDefault("0")
     private int status;
+
     public Music() {
     }
 

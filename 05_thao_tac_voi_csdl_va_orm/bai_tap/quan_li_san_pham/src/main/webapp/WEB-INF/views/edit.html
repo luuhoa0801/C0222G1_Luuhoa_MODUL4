@@ -2,31 +2,31 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="/layout :: head"></head>
 <body>
-<h3>Edit Music</h3>
+<h3>Edit Product</h3>
 <p>
-    <a th:href="@{/music}">
-        Back to Music list
+    <a th:href="@{/product}">
+        Back to Product list
     </a>
 </p>
 <div id="form">
-    <form th:action="@{/update/}" th:object="${music}"
+    <form th:action="@{/update/}" th:object="${product}"
           method="POST" novalidate="novalidate">
         <input type="hidden" th:field="*{id}"/>
         <div>
-            <label>Tên</label>
+            <label>Name</label>
             <input type="text" th:field="*{name}"/>
         </div>
         <div>
-            <label>Nghệ sĩ thể hiện</label>
-            <input type="text" th:field="*{showMan}"/>
+            <label>Price</label>
+            <input type="text" th:field="*{price}"/>
         </div>
         <div>
-            <label>Loại nhạc</label>
-            <input type="text" th:field="*{category}"/>
+            <label>Status</label>
+            <input type="text" th:field="*{status}"/>
         </div>
         <div>
-            <label>Url</label>
-            <input type="text" th:field="*{url}"/>
+            <label>Producer</label>
+            <input type="text" th:field="*{producer}"/>
         </div>
         <input type="submit" value="Edit"/>
     </form>

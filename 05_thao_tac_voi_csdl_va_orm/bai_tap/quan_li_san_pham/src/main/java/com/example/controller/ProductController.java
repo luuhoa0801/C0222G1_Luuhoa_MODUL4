@@ -17,7 +17,7 @@ public class ProductController {
 
     @GetMapping("/product")
     public String getShowForm(Model model) {
-        model.addAttribute("product", new Product());
+//        model.addAttribute("product", new Product());
         model.addAttribute("listProduct", iProductService.findAll());
         return "home";
     }
@@ -30,7 +30,6 @@ public class ProductController {
 
     @PostMapping("/create")
     public String save(Product product) {
-        product.setId(iProductService.findAll().get(iProductService.findAll().size() - 1).getId() + 1);
         iProductService.save(product);
         return "redirect:/product";
     }
@@ -42,9 +41,8 @@ public class ProductController {
     }
 
     @PostMapping("/delete")
-    public String delete(Product product, RedirectAttributes redirect) {
-        iProductService.remove(product.getId());
-        redirect.addFlashAttribute("success", "xóa thành công!");
+    public String delete(Product product) {
+        iProductService.delete(product.getId());
         return "redirect:/product";
     }
 
@@ -56,7 +54,7 @@ public class ProductController {
 
     @PostMapping("/update")
     public String update(Product product) {
-        iProductService.update(product.getId(), product);
+        iProductService.update( product);
         return "redirect:/product";
     }
 
@@ -67,8 +65,8 @@ public class ProductController {
     }
 
     @GetMapping("/search")
-    public String searchByName(Product product, Model model) {
-        model.addAttribute("listProduct", iProductService.searchByName(product.getName()));
+    public String searchByName(String name, Model model) {
+        model.addAttribute("listProduct", iProductService.searchByName(name));
         return "home";
     }
 

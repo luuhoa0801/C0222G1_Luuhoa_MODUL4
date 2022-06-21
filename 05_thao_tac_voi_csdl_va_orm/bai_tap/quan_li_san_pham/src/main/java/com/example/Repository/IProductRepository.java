@@ -16,5 +16,6 @@ public interface IProductRepository {
     void delete(int id);
 
     List<Product> searchByName(String name);
+
 }
 

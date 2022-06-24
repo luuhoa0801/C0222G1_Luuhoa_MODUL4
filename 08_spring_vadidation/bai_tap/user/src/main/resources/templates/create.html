@@ -4,21 +4,21 @@
 </head>
 <body>
 <form th:object="${user}" action="/create" method="post">
-<!--    Id User <input th:field="*{id}"><br>-->
+    <!--    Id User <input th:field="*{id}"><br>-->
     First Name <input th:field="*{firstName}"><br>
-    <p style="color: red;"th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></p>
+    <p style="color: red;" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></p>
     Last Name <input th:field="*{lastName}"><br>
-    <p style="color: red;"th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></p>
+    <p style="color: red;" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></p>
 
     Phone <input th:field="*{phone}"><br>
-    <p style="color: red;"th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>
+    <p style="color: red;" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>
 
     Age <input th:field="*{age}"><br>
-    <p style="color: red;"th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></p>
+    <p style="color: red;" th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></p>
 
     Email <input th:field="*{email}"><br>
-    <p style="color: red;"th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
-    <button type="submit"> Thêm </button>
+    <p style="color: red;" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+    <button type="submit"> Thêm</button>
 </form>
 </body>
 </html>

@@ -1,33 +1,33 @@
-package com.codegym.music.model;
+package com.codegym.product.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Entity(name = "music")
-public class Music {
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Pattern(regexp = "^[A-Za-z-0-9, ]*$", message = "sai định dạng name ")
-    @Size(min = 1, max = 800, message = "không quá 800 từ")
+    @Pattern(regexp ="^[A-Za-z-0-9, ]*$",message = "sai định dạng name ")
+    @Size(min = 1,max = 800,message = "không quá 800 từ")
     private String name;
 
-    @Pattern(regexp = "^[A-Za-z-0-9, ]*$", message = "Sai định dạng ")
-    @Size(min = 1, max = 300, message = "không quá 300 từ")
+    @Pattern(regexp = "^[A-Za-z-0-9, ]*$",message = "Sai định dạng ")
+    @Size(min = 1,max = 300,message = "không quá 300 từ")
     @Column(name = "show_man")
     private String showMan;
 
-    @Size(min = 1, max = 1000, message = "không quá 1000 từ")
+    @Size(min = 1,max = 1000,message = "không quá 1000 từ")
     private String category;
 
-    public Music() {
+    public Product() {
     }
 
-    public Music(@Pattern(regexp = "^[A-Za-z-0-9, ]*$", message = "sai định dạng name ") @Size(min = 1, max = 800, message = "không quá 800 từ") String name,
-                 @Pattern(regexp = "^[A-Za-z-0-9, ]*$", message = "Sai định dạng ") @Size(min = 1, max = 300, message = "không quá 300 từ") String showMan,
-                 @Size(min = 1, max = 1000, message = "không quá 1000 từ") String category) {
+    public Product(@Pattern(regexp = "^[A-Za-z-0-9, ]*$", message = "sai định dạng name ") @Size(min = 1, max = 800, message = "không quá 800 từ") String name,
+                   @Pattern(regexp = "^[A-Za-z-0-9, ]*$", message = "Sai định dạng ") @Size(min = 1, max = 300, message = "không quá 300 từ") String showMan,
+                   @Size(min = 1, max = 1000, message = "không quá 1000 từ") String category) {
         this.name = name;
         this.showMan = showMan;
         this.category = category;

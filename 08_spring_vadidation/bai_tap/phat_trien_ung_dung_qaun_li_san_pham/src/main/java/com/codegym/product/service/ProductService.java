@@ -1,4 +1,4 @@
-package com.codegym.music.service;
+package com.codegym.product.service;
 
 import com.codegym.music.model.Music;
 import com.codegym.music.repository.IMusicRepository;
@@ -8,10 +8,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MusicService implements IMusicService {
+public class ProductService implements IProductService {
     @Autowired
     private IMusicRepository iMusicRepository;
-
     @Override
     public Page<Music> getAll(Pageable pageable) {
         return iMusicRepository.findAllMusic(pageable);
@@ -19,12 +18,12 @@ public class MusicService implements IMusicService {
 
     @Override
     public void create(Music music) {
-        iMusicRepository.create(music.getName(), music.getShowMan(), music.getCategory());
+    iMusicRepository.create(music.getName(),music.getShowMan(),music.getCategory());
     }
 
     @Override
     public void update(Music music) {
-        iMusicRepository.update(music.getName(), music.getShowMan(), music.getCategory(), music.getId());
+    iMusicRepository.update(music.getName(),music.getShowMan(),music.getCategory(),music.getId());
     }
 
     @Override

@@ -9,14 +9,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import javax.transaction.Transactional;
-import java.util.List;
 
 @Transactional
-public interface IUserRepository extends JpaRepository<User,Integer> {
+public interface IUserRepository extends JpaRepository<User, Integer> {
 //    @Query(value = "select * from user", nativeQuery = true)
 //    List<User> findAll();
 
-    @Query(value = "select * from user",nativeQuery = true)
+    @Query(value = "select * from user", nativeQuery = true)
     Page<User> findAllUser(Pageable pageable);
 
     @Modifying

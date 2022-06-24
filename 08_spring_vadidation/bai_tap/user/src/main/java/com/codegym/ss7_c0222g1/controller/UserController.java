@@ -20,26 +20,28 @@ import javax.validation.Valid;
 public class UserController {
     @Autowired
     private IUserService iUserService;
+
     @GetMapping("/user")
     public String getShowForm(@RequestParam(name = "page", defaultValue = "0") int page, Model model) {
         Page<User> list = iUserService.getAll(PageRequest.of(page, 2));
-        model.addAttribute("listUser",list );
+        model.addAttribute("listUser", list);
         return "list";
     }
+
     @GetMapping("/create")
-    public String create( Model model ) {
+    public String create(Model model) {
         model.addAttribute("user", new User());
         return "create";
     }
 
     @PostMapping("/create")
-    public String save( @Valid @ModelAttribute("user") User user, BindingResult bindingResult ,
-                        RedirectAttributes redirectAttributes ,Model model) {
-        if (bindingResult.hasErrors()){
+    public String save(@Valid @ModelAttribute("user") User user, BindingResult bindingResult,
+                       RedirectAttributes redirectAttributes, Model model) {
+        if (bindingResult.hasErrors()) {
             return "create";
         }
         iUserService.create(user);
-        redirectAttributes.addFlashAttribute("msg","thêm mới thành công");
+        redirectAttributes.addFlashAttribute("msg", "thêm mới thành công");
         return "redirect:/user";
     }
 

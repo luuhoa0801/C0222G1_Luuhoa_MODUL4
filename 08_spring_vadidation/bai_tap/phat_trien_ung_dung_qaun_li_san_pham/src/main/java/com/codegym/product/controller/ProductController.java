@@ -1,4 +1,4 @@
-package com.codegym.music.controller;
+package com.codegym.product.controller;
 
 import com.codegym.music.model.Music;
 import com.codegym.music.service.IMusicService;
@@ -14,31 +14,29 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.validation.Valid;
 
 @Controller
-public class MusicController {
+public class ProductController {
     @Autowired
     private IMusicService iMusicService;
-
     @GetMapping("/music")
     public String getShowForm(@RequestParam(name = "page", defaultValue = "0") int page, Model model) {
         Page<Music> list = iMusicService.getAll(PageRequest.of(page, 2));
-        model.addAttribute("listMusic", list);
+        model.addAttribute("listMusic",list );
         return "list";
     }
-
     @GetMapping("/create")
-    public String create(Model model) {
+    public String create( Model model ) {
         model.addAttribute("music", new Music());
         return "create";
     }
 
     @PostMapping("/create")
-    public String save(@Valid @ModelAttribute("music") Music music, BindingResult bindingResult,
-                       RedirectAttributes redirectAttributes) {
-        if (bindingResult.hasErrors()) {
+    public String save(@Valid @ModelAttribute("music") Music music, BindingResult bindingResult ,
+                       RedirectAttributes redirectAttributes ) {
+        if (bindingResult.hasErrors()){
             return "create";
         }
         iMusicService.create(music);
-        redirectAttributes.addFlashAttribute("msg", "thêm mới thành công");
+        redirectAttributes.addFlashAttribute("msg","thêm mới thành công");
         return "redirect:/music";
     }
 
@@ -51,7 +49,7 @@ public class MusicController {
     @PostMapping("/update")
     public String PostUpdate(@Valid @ModelAttribute(name = "music") Music music, BindingResult bindingResult) {
 
-        if (bindingResult.hasErrors()) {
+        if(bindingResult.hasErrors()){
             return "edit";
         }
         iMusicService.update(music);

@@ -1,36 +1,44 @@
 package com.codegym.product.model;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-@Entity(name = "music")
+@Entity(name = "product")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Pattern(regexp ="^[A-Za-z-0-9, ]*$",message = "sai định dạng name ")
-    @Size(min = 1,max = 800,message = "không quá 800 từ")
+    @Pattern(regexp = "^[A-Za-z-0-9, ]*$", message = "sai định dạng name ")
+    @Size(min = 1, max = 800, message = "không quá 800 từ")
     private String name;
 
-    @Pattern(regexp = "^[A-Za-z-0-9, ]*$",message = "Sai định dạng ")
-    @Size(min = 1,max = 300,message = "không quá 300 từ")
-    @Column(name = "show_man")
-    private String showMan;
+    @Min(value = 1, message = "Gía không âm")
+    private double price;
 
-    @Size(min = 1,max = 1000,message = "không quá 1000 từ")
-    private String category;
+    @Size(min = 1, max = 300, message = "không quá 300,k để trống")
+    private String status;
+
+    @Size(min = 1, max = 300, message = "không quá 300,k để trống")
+    private String producer;
 
     public Product() {
     }
 
-    public Product(@Pattern(regexp = "^[A-Za-z-0-9, ]*$", message = "sai định dạng name ") @Size(min = 1, max = 800, message = "không quá 800 từ") String name,
-                   @Pattern(regexp = "^[A-Za-z-0-9, ]*$", message = "Sai định dạng ") @Size(min = 1, max = 300, message = "không quá 300 từ") String showMan,
-                   @Size(min = 1, max = 1000, message = "không quá 1000 từ") String category) {
+    public Product(@Pattern(regexp = "^[A-Za-z-0-9, ]*$", message = "sai định dạng name ")
+                   @Size(min = 1, max = 800, message = "không quá 800 từ") String name,
+                   @Min(value = 1, message = "Gía không âm") double price,
+                   @Size(min = 1, max = 300, message = "không quá 300,k để trống") String status,
+                   @Size(min = 1, max = 300, message = "không quá 300,k để trống") String producer) {
         this.name = name;
-        this.showMan = showMan;
-        this.category = category;
+        this.price = price;
+        this.status = status;
+        this.producer = producer;
     }
 
     public Integer getId() {
@@ -49,20 +57,27 @@ public class Product {
         this.name = name;
     }
 
-    public String getShowMan() {
-        return showMan;
+    public double getPrice() {
+        return price;
     }
 
-    public void setShowMan(String showMan) {
-        this.showMan = showMan;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
-    public String getCategory() {
-        return category;
+    public String getStatus() {
+        return status;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
+    public String getProducer() {
+        return producer;
+    }
+
+    public void setProducer(String producer) {
+        this.producer = producer;
+    }
 }

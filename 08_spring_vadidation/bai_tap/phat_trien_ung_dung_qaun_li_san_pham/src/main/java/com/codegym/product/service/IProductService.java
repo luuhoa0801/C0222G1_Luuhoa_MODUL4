@@ -1,15 +1,15 @@
 package com.codegym.product.service;
 
-import com.codegym.music.model.Music;
+import com.codegym.product.model.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface IProductService {
-    Page<Music> getAll(Pageable pageable);
+    Page<Product> getAll(Pageable pageable);
 
-    void create(Music music);
+    void create(Product product);
 
-    void update(Music music);
+    void update(Product product);
 
-    Music findByIdSearch(Integer id);
+    Product findByIdSearch(Integer id);
 }

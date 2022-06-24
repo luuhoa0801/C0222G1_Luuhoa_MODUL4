@@ -1,7 +1,8 @@
 package com.codegym.product.service;
 
-import com.codegym.music.model.Music;
-import com.codegym.music.repository.IMusicRepository;
+
+import com.codegym.product.model.Product;
+import com.codegym.product.repository.IProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,24 +11,26 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProductService implements IProductService {
     @Autowired
-    private IMusicRepository iMusicRepository;
+    private IProductRepository iProductRepository;
+
+
     @Override
-    public Page<Music> getAll(Pageable pageable) {
-        return iMusicRepository.findAllMusic(pageable);
+    public Page<Product> getAll(Pageable pageable) {
+        return iProductRepository.findAllProduct(pageable);
     }
 
     @Override
-    public void create(Music music) {
-    iMusicRepository.create(music.getName(),music.getShowMan(),music.getCategory());
+    public void create(Product product) {
+        iProductRepository.create(product.getName(), product.getPrice(), product.getStatus(), product.getProducer());
     }
 
     @Override
-    public void update(Music music) {
-    iMusicRepository.update(music.getName(),music.getShowMan(),music.getCategory(),music.getId());
+    public void update(Product product) {
+        iProductRepository.update(product.getName(), product.getPrice(), product.getStatus(), product.getProducer(), product.getId());
     }
 
     @Override
-    public Music findByIdSearch(Integer id) {
-        return iMusicRepository.findByIdSearch(id);
+    public Product findByIdSearch(Integer id) {
+        return iProductRepository.findByIdSearch(id);
     }
 }

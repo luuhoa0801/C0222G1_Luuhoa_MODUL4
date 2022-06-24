@@ -1,7 +1,8 @@
 package com.codegym.product.controller;
 
-import com.codegym.music.model.Music;
-import com.codegym.music.service.IMusicService;
+
+import com.codegym.product.model.Product;
+import com.codegym.product.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -16,44 +17,46 @@ import javax.validation.Valid;
 @Controller
 public class ProductController {
     @Autowired
-    private IMusicService iMusicService;
-    @GetMapping("/music")
+    private IProductService iProductService;
+
+    @GetMapping("/product")
     public String getShowForm(@RequestParam(name = "page", defaultValue = "0") int page, Model model) {
-        Page<Music> list = iMusicService.getAll(PageRequest.of(page, 2));
-        model.addAttribute("listMusic",list );
+        Page<Product> list = iProductService.getAll(PageRequest.of(page, 2));
+        model.addAttribute("listProduct", list);
         return "list";
     }
+
     @GetMapping("/create")
-    public String create( Model model ) {
-        model.addAttribute("music", new Music());
+    public String create(Model model) {
+        model.addAttribute("product", new Product());
         return "create";
     }
 
     @PostMapping("/create")
-    public String save(@Valid @ModelAttribute("music") Music music, BindingResult bindingResult ,
-                       RedirectAttributes redirectAttributes ) {
-        if (bindingResult.hasErrors()){
+    public String save(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult,
+                       RedirectAttributes redirectAttributes) {
+        if (bindingResult.hasErrors()) {
             return "create";
         }
-        iMusicService.create(music);
-        redirectAttributes.addFlashAttribute("msg","thêm mới thành công");
-        return "redirect:/music";
+        iProductService.create(product);
+        redirectAttributes.addFlashAttribute("msg", "thêm mới thành công");
+        return "redirect:/product";
     }
 
     @GetMapping("/{id}/update")
     public String showUpdate(@PathVariable Integer id, Model model) {
-        model.addAttribute("music", iMusicService.findByIdSearch(id));
+        model.addAttribute("product", iProductService.findByIdSearch(id));
         return "edit";
     }
 
     @PostMapping("/update")
-    public String PostUpdate(@Valid @ModelAttribute(name = "music") Music music, BindingResult bindingResult) {
+    public String PostUpdate(@Valid @ModelAttribute(name = "product") Product product, BindingResult bindingResult) {
 
-        if(bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             return "edit";
         }
-        iMusicService.update(music);
-        return "redirect:/music";
+        iProductService.update(product);
+        return "redirect:/product";
     }
 
 }

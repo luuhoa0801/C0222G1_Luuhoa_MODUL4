@@ -10,15 +10,16 @@ public class Music {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Pattern(regexp = "^[A-Za-z-0-9, ]*$", message = "sai định dạng name ")
+    @Pattern(regexp = "^[A-Za-z-0-9 ]*$", message = "sai định dạng name ")
     @Size(min = 1, max = 800, message = "không quá 800 từ")
     private String name;
 
-    @Pattern(regexp = "^[A-Za-z-0-9, ]*$", message = "Sai định dạng ")
+    @Pattern(regexp = "^[A-Za-z-0-9 ]*$", message = "Sai định dạng ")
     @Size(min = 1, max = 300, message = "không quá 300 từ")
     @Column(name = "show_man")
     private String showMan;
 
+    @Pattern(regexp = "^[A-Za-z-0-9, ]*$", message = "Sai định dạng ")
     @Size(min = 1, max = 1000, message = "không quá 1000 từ")
     private String category;
 

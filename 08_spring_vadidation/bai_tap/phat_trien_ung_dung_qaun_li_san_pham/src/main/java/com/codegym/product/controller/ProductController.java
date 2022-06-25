@@ -59,4 +59,16 @@ public class ProductController {
         return "redirect:/product";
     }
 
+    @GetMapping("/{id}/delete")
+    public String delete(@PathVariable int id, Model model) {
+        model.addAttribute("product", iProductService.findByIdSearch(id));
+        return "delete";
+    }
+
+    @PostMapping("/delete")
+    public String delete(Product product) {
+        iProductService.delete(product.getId());
+        return "redirect:/product";
+    }
+
 }

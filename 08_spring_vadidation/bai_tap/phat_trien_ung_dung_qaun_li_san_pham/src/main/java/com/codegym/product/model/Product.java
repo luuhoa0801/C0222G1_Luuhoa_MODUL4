@@ -1,9 +1,8 @@
 package com.codegym.product.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.hibernate.annotations.ColumnDefault;
+
+import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -27,18 +26,40 @@ public class Product {
     @Size(min = 1, max = 300, message = "không quá 300,k để trống")
     private String producer;
 
+    @Column(name = "status_delete")
+    @ColumnDefault("0")
+    private int statusDelete;
+
     public Product() {
     }
 
-    public Product(@Pattern(regexp = "^[A-Za-z-0-9, ]*$", message = "sai định dạng name ")
-                   @Size(min = 1, max = 800, message = "không quá 800 từ") String name,
-                   @Min(value = 1, message = "Gía không âm") double price,
-                   @Size(min = 1, max = 300, message = "không quá 300,k để trống") String status,
-                   @Size(min = 1, max = 300, message = "không quá 300,k để trống") String producer) {
+//    public Product(@Pattern(regexp = "^[A-Za-z-0-9, ]*$", message = "sai định dạng name ")
+//                   @Size(min = 1, max = 800, message = "không quá 800 từ") String name,
+//                   @Min(value = 1, message = "Gía không âm") double price,
+//                   @Size(min = 1, max = 300, message = "không quá 300,k để trống") String status,
+//                   @Size(min = 1, max = 300, message = "không quá 300,k để trống") String producer) {
+//        this.name = name;
+//        this.price = price;
+//        this.status = status;
+//        this.producer = producer;
+//    }
+
+
+    public Product(Integer id, String name, double price, String status, String producer, int statusDelete) {
+        this.id = id;
         this.name = name;
         this.price = price;
         this.status = status;
         this.producer = producer;
+        this.statusDelete = statusDelete;
+    }
+
+    public int getStatusDelete() {
+        return statusDelete;
+    }
+
+    public void setStatusDelete(int statusDelete) {
+        this.statusDelete = statusDelete;
     }
 
     public Integer getId() {
@@ -80,4 +101,5 @@ public class Product {
     public void setProducer(String producer) {
         this.producer = producer;
     }
+
 }

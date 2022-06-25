@@ -11,6 +11,11 @@
         </button>
     </a>
 </p>
+<div>
+    <p th:if="${msg != null }">
+    <h4 th:text="${msg}"></h4>
+    </p>
+</div>
 <table>
     <thead>
     <tr>
@@ -20,7 +25,9 @@
         <th>Gía</th>
         <th>Trạng thái</th>
         <th>Nhà sản xuất</th>
+        <th>StatusDelete</th>
         <th>Edit</th>
+        <th>Delete</th>
     </tr>
     </thead>
     <tbody>
@@ -31,7 +38,9 @@
         <td th:text="${product.price}"></td>
         <td th:text="${product.status}"></td>
         <td th:text="${product.producer}"></td>
+        <td th:text="${product.statusDelete}"></td>
         <td><a th:href="@{{id}/update(id=${product.id})}">Edit</a></td>
+        <td><a th:href="@{{id}/delete(id=${product.id})}">Delete</a></td>
     </tr>
     </tbody>
 </table>

@@ -12,4 +12,6 @@ public interface IProductService {
     void update(Product product);
 
     Product findByIdSearch(Integer id);
+
+    void delete(Integer id);
 }

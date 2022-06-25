@@ -13,7 +13,7 @@ import javax.transaction.Transactional;
 
 @Transactional
 public interface IProductRepository extends JpaRepository<Product, Integer> {
-    @Query(value = "select * from product", nativeQuery = true)
+    @Query(value = "select * from product where status_delete = 0", nativeQuery = true)
     Page<Product> findAllProduct(Pageable pageable);
 
     @Modifying
@@ -27,8 +27,13 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
     void update(@Param("name") String name, @Param("price") double price, @Param("status") String status, @Param("producer") String producer,
                 @Param("id") Integer id);
 
+    @Modifying
+    @Query(value = "update product  set status_delete = 1 where id = :id ", nativeQuery = true)
+    void delete(@Param("id") Integer id);
+
     @Query(value = "select * from product where id = :id", nativeQuery = true)
     Product findByIdSearch(@Param("id") Integer id);
+
 
 
 }

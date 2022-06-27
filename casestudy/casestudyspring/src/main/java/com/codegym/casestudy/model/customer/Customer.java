@@ -1,12 +1,12 @@
-package com.codegym.casestudy.model;
+package com.codegym.casestudy.model.customer;
 
-import javax.persistence.Column;
+import javax.persistence.*;
 
+@Entity(name = "customer")
 public class Customer {
+    @Id
     @Column(name = "customer_id")
     private  String customerId;
-    @Column(name = "customer_type_id")
-    private int customerTypeId;
     @Column(name = "customer_name")
     private String customerName;
     @Column(name = "customer_birthday")
@@ -21,17 +21,19 @@ public class Customer {
     private String customerEmail;
     @Column(name = "customer_address")
     private String customerAddress;
-    @Column(name = "status")
+
+    @ManyToOne
+    @JoinColumn(name = "customer_type_id",referencedColumnName = "customer_type_id")
+    private CustomerType customerType;
     private int status;
 
     public Customer() {
     }
 
-    public Customer(String customerId, int customerTypeId, String customerName, String customerBirthday,
-                    int customerGender, String customerIdCard, String customerPhone, String customerEmail,
-                    String customerAddress, int status) {
+    public Customer(String customerId, String customerName, String customerBirthday, int customerGender,
+                    String customerIdCard, String customerPhone, String customerEmail, String customerAddress,
+                    CustomerType customerType, int status) {
         this.customerId = customerId;
-        this.customerTypeId = customerTypeId;
         this.customerName = customerName;
         this.customerBirthday = customerBirthday;
         this.customerGender = customerGender;
@@ -39,6 +41,7 @@ public class Customer {
         this.customerPhone = customerPhone;
         this.customerEmail = customerEmail;
         this.customerAddress = customerAddress;
+        this.customerType = customerType;
         this.status = status;
     }
 
@@ -48,14 +51,6 @@ public class Customer {
 
     public void setCustomerId(String customerId) {
         this.customerId = customerId;
-    }
-
-    public int getCustomerTypeId() {
-        return customerTypeId;
-    }
-
-    public void setCustomerTypeId(int customerTypeId) {
-        this.customerTypeId = customerTypeId;
     }
 
     public String getCustomerName() {
@@ -112,6 +107,14 @@ public class Customer {
 
     public void setCustomerAddress(String customerAddress) {
         this.customerAddress = customerAddress;
+    }
+
+    public CustomerType getCustomerType() {
+        return customerType;
+    }
+
+    public void setCustomerType(CustomerType customerType) {
+        this.customerType = customerType;
     }
 
     public int getStatus() {

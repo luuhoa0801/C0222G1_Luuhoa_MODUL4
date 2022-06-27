@@ -1,4 +1,4 @@
-package com.codegym.casestudy.model;
+package com.codegym.casestudy.model.employee;
 
 import javax.persistence.Column;
 

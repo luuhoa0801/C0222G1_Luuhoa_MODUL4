@@ -3,7 +3,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Product</title>
+    <title>Book</title>
     <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{/datatables/css/dataTables.bootstrap4.min.css}"/>
     <style>
@@ -34,31 +34,24 @@
 <body class="bg-dark">
 <div class="container">
     <div class="bg-white">
-        <div class="h1 center-box "> Edit Product </div>
+        <div class="h1 center-box "> Mượn sách </div>
         <div>
-            <form th:action="@{/update}" th:object="${product}"
+            <form th:action="@{/update}" th:object="${book}"
                   method="POST" novalidate="novalidate" class="p-3">
-                <input type="hidden" class="form-control" th:field="*{id}"/>
+                <input type="hidden" class="form-control" th:field="*{idBook}"/>
 
                 <div class="form-group">
-                    <label>Tên Sản phẩm</label>
-                    <input type="text" class="form-control" th:field="*{name}"/>
+                    <label>Tên sách</label>
+                    <input type="text" class="form-control" th:field="*{nameBook}"/>
                 </div>
 
                 <div class="form-group">
-                    <label>Gía</label>
-                    <input type="text" class="form-control" th:field="*{price}"/>
-                </div>
-                <div class="form-group">
-                    <label>Trạng thái</label>
-                    <input type="text" class="form-control" th:field="*{status}"/>
-                </div>
-                <div class="form-group">
-                    <label>Nhà sản xuất</label>
-                    <input type="text" class="form-control" th:field="*{producer}"/>
+                    <label>Số lượng sách</label>
+                    <input type="text" class="form-control" th:field="*{amount}"/>
                 </div>
 
-                <input type="submit" class="btn btn-primary" />
+
+                <input type="submit" class="btn btn-primary" value="Mượn"/>
             </form>
         </div>
 

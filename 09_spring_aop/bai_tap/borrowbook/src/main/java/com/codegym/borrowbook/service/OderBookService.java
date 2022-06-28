@@ -19,4 +19,9 @@ public class OderBookService implements IOderService {
     public OderBook findIdOder(String id) {
         return iOderBookRepository.findByIdOder(id);
     }
+
+    @Override
+    public void delete(OderBook oderBook) {
+        iOderBookRepository.delete(oderBook);
+    }
 }

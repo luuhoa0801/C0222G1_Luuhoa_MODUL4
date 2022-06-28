@@ -7,4 +7,5 @@ public interface IOderService {
 
     OderBook findIdOder(String id);
 
+    void delete(OderBook oderBook);
 }

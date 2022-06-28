@@ -26,4 +26,9 @@ public class BookService implements IBookService {
     public void update(Book book) {
         iBookRepository.update(book.getAmount(), book.getIdBook());
     }
+
+    @Override
+    public void returnBook(Book book) {
+        iBookRepository.returnBook(book.getAmount() + 1,book.getIdBook());
+    }
 }

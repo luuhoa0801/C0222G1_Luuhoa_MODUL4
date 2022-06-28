@@ -1,19 +1,25 @@
 package com.codegym.gio_hang.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity(name = "cart")
 public class Cart {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_cart")
     private Integer idCart;
     private String name;
     private double price;
-    private int amount;
+    private String url;
 
     public Cart() {
+    }
+
+    public Cart(Integer idCart, String name, double price, String url) {
+        this.idCart = idCart;
+        this.name = name;
+        this.price = price;
+        this.url = url;
     }
 
     public Integer getIdCart() {
@@ -40,12 +46,12 @@ public class Cart {
         this.price = price;
     }
 
-    public int getAmount() {
-        return amount;
+    public String getUrl() {
+        return url;
     }
 
-    public void setAmount(int amount) {
-        this.amount = amount;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
 }

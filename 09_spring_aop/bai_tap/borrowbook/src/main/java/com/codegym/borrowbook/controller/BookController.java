@@ -1,6 +1,7 @@
 package com.codegym.borrowbook.controller;
 
 import com.codegym.borrowbook.model.Book;
+import com.codegym.borrowbook.model.OderBook;
 import com.codegym.borrowbook.service.IBookService;
 import com.codegym.borrowbook.service.IOderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,15 @@ public class BookController {
         String id = String.valueOf(idOderBook);
         iBookService.update(book);
         iOderService.create(id, book.getIdBook());
+        return "redirect:/book";
+    }
+    @GetMapping("/return")
+    public String showReturn( String id) {
+        OderBook orderBook = iOderService.findIdOder(id);
+        Book book = orderBook.getBooks();
+        iBookService.returnBook(book);
+        iOderService.delete(orderBook);
+
         return "redirect:/book";
     }
 

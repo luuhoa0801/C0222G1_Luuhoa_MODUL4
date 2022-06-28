@@ -19,7 +19,11 @@ public interface IBookRepository extends JpaRepository<Book, String> {
     Book findByCodeBook(@Param("idBook") String idBook);
 
     @Modifying
-    @Query(value = "update book set amount =:amount-1 where id_book =:idBook")
+    @Query(value = "update book set amount =:amount-1 where idBook =:idBook")
     void update(@Param("amount") int amount, @Param("idBook") String idBook);
+
+    @Modifying
+    @Query(value = "update book set amount = :amount where idBook =:idBook")
+    void returnBook(@Param("amount") int amount, @Param("idBook") String idBook);
 
 }

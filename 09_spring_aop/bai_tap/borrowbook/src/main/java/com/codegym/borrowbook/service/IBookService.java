@@ -10,4 +10,6 @@ public interface IBookService {
     Book findByCodeBook(String idBook);
 
     void update(Book book);
+
+    void returnBook(Book book);
 }

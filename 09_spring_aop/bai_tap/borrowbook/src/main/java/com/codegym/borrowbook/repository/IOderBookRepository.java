@@ -14,7 +14,7 @@ import javax.transaction.Transactional;
 @Transactional
 public interface IOderBookRepository extends JpaRepository<OderBook, Integer> {
     @Query(value = "select * from oder_book ", nativeQuery = true)
-    Page<Book> findAllOderBook(Pageable pageable);
+    Page<OderBook> findAllOderBook(Pageable pageable);
 
     @Modifying
     @Query(value = "insert into oder_book values (:id,:idBook)", nativeQuery = true)
@@ -23,8 +23,8 @@ public interface IOderBookRepository extends JpaRepository<OderBook, Integer> {
     @Query(value = "select * from oder_book where id = :id", nativeQuery = true)
     OderBook findByIdOder(@Param("id") String id);
 
-//    @Modifying
-//    @Query(value = "insert into oder_book values (:id,:idBook)", nativeQuery = true)
-//    void delete(@Param("id") String id,@Param("idBook") String idBook);
+    @Modifying
+    @Query(value = "delete from order_book where id = :id", nativeQuery = true)
+    void delete(@Param("id") String id);
 
 }

@@ -32,55 +32,43 @@
 </head>
 <body class="h-100">
 <nav class="navbar navbar-light bg-dark text-white center-box head-text">
-    Danh sách giỏ hàng
+    Danh sách oder
 </nav>
-
+<div class="p-5 bg-info">
+    <p>
+        <a th:href="@{/cart}" class="btn btn-primary">
+            Quay lại trang chủ
+        </a>
+    </p>
+</div>
 <div class="container-fluid content">
     <div class="row h-100">
         <div class="col-md-1">&nbsp;</div>
         <div class="col-md-10 h-100" style="border: 1px solid black">
-            <table class="table text-center table-striped table-hover bg-white" >
-                <div>
-                    <h4 style="color: #c82333" th:text="${msg}"></h4>
-                </div>
+            <table class="table text-center table-striped table-hover bg-white">
                 <thead>
                 <tr>
-                    <th>STT</th>
                     <th>Mã hàng</th>
                     <th>Tên hàng</th>
                     <th>Giá hàng</th>
                     <th>Mô tả</th>
                     <th>Đặt hàng</th>
-
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="cart,varStat : ${listCart}">
-                    <td th:text="${varStat.count}"></td>
-                    <td th:text="${cart.idCart}"></td>
-                    <td th:text="${cart.name}"></td>
-                    <td th:text="${cart.price}"></td>
-                    <td><img th:src="@{${cart.url}}"></td>
-                    <td><a th:href="@{/views/{idCart}(idCart = ${cart.idCart})}">Views</a></td>
+                <tr th:each="listViews : ${cartList}">
+                <td th:text="${listViews.idCart}"></td>
+                <td th:text="${listViews.name}"></td>
+                <td th:text="${listViews.price}"></td>
+                <td><img th:src="@{${listViews.url}}"></td>
+
                 </tr>
                 </tbody>
             </table>
-            <div>
-    <span>
-        <a th:if="${listCart.hasPrevious()}" th:href="@{/cart(page = ${listCart.number - 1})}">Previous</a>
-    </span>
-                <span th:each="pageNo: ${#numbers.sequence(0,listCart.totalPages - 1)}">
-        <a th:href="@{/cart(page = ${pageNo})}" th:text="${pageNo}"></a>
-    </span>
-                <span>
-        <a th:if="${listCart.hasNext()}" th:href="@{/cart(page = ${listCart.number +1})}">Next</a>
-    </span>
-            </div>
+
         </div>
         <div class="col-md-1">&nbsp;</div>
     </div>
-
-
 </div>
 
 </body>

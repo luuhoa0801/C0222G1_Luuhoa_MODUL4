@@ -59,8 +59,7 @@
                     <td th:text="${book.idBook}"></td>
                     <td th:text="${book.nameBook}"></td>
                     <td th:text="${book.amount}"></td>
-                    <td><a th:href="@{/{idBook}/update(idBook=${book.idBook})}">Mượn</a></td>
-
+                    <td><a th:if="${book.amount > 0}" th:href="@{/{idBook}/update(idBook=${book.idBook})}">Mượn</a></td>
                 </tr>
                 </tbody>
             </table>
@@ -71,6 +70,7 @@
         </div>
         <div class="col-md-1">&nbsp;&nbsp;</div>
     </div>
+    <div class="text-success font-weight-bold" th:if="${msg != null}" th:text="${msg}"></div>
 </div>
 
 <div>

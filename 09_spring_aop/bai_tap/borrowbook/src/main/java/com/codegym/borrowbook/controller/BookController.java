@@ -10,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class BookController {
@@ -40,14 +41,20 @@ public class BookController {
         return "redirect:/book";
     }
     @GetMapping("/return")
-    public String showReturn( String id) {
+    public String showReturn(String id, RedirectAttributes redirectAttributes) {
         OderBook orderBook = iOderService.findIdOder(id);
-        Book book = orderBook.getBooks();
-        iBookService.returnBook(book);
-        iOderService.delete(orderBook);
-
-        return "redirect:/book";
+        if (orderBook != null){
+            Book book = orderBook.getBooks();
+            iBookService.returnBook(book);
+            iOderService.delete(orderBook);
+            redirectAttributes.addFlashAttribute("msg", "Trả sách thành công");
+            return "redirect:/book";
+        }else {
+            redirectAttributes.addFlashAttribute("msg", "Không có mã mượn sách");
+            return "redirect:/book";
+        }
     }
+
 
 //    public static void main(String[] args) {
 //        int n1 =1;

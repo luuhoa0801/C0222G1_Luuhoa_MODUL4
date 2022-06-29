@@ -40,15 +40,16 @@ public class CartController {
     }
 
     @GetMapping("cart/{idCart}")
-    public String addToCart(@PathVariable("idCart") Integer idCart, @ModelAttribute("cart") List<Cart> cartList,
+    public String addToCart(@PathVariable("idCart") Integer idCart, @ModelAttribute("cartShow") List<Cart> cartList,
                             RedirectAttributes redirectAttributes) {
         Cart cart = iCartService.findById(idCart);
         cartList.add(cart);
         redirectAttributes.addFlashAttribute("msg", "Đã thêm vào giỏ hàng");
         return "redirect:/cart";
     }
+
     @GetMapping("/order")
-    public String order(@ModelAttribute("cart") List<Cart> cartList, Model model) {
+    public String order(@ModelAttribute("cartShow") List<Cart> cartList, Model model) {
         model.addAttribute("cartList", cartList);
         int total = 0;
         for (Cart item : cartList) {

@@ -52,16 +52,14 @@
                     <th>Tên hàng</th>
                     <th>Giá hàng</th>
                     <th>Mô tả</th>
-                    <th>Đặt hàng</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="listViews : ${cartList}">
-                <td th:text="${listViews.idCart}"></td>
-                <td th:text="${listViews.name}"></td>
-                <td th:text="${listViews.price}"></td>
-                <td><img th:src="@{${listViews.url}}"></td>
-
+                    <td th:text="${listViews.idCart}"></td>
+                    <td th:text="${listViews.name}"></td>
+                    <td th:text="${listViews.price}"></td>
+                    <td><img th:src="@{${listViews.url}}"></td>
                 </tr>
                 </tbody>
             </table>

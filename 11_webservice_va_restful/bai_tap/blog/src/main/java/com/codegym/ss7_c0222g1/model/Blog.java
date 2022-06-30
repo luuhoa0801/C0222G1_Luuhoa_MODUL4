@@ -16,7 +16,7 @@ public class Blog {
     @ColumnDefault("0")
     private int statusDelete;
     @ManyToOne
-    @JoinColumn(name = "id_category",referencedColumnName = "id_category")
+    @JoinColumn(name = "id_category", referencedColumnName = "id_category")
     private Category category;
 
     public Category getCategory() {

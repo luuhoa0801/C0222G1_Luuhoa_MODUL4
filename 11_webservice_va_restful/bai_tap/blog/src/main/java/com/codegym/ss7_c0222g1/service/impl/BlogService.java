@@ -20,8 +20,8 @@ public class BlogService implements IBlogService {
     private ICategoryRepository iCategoryRepository;
 
     @Override
-    public void create(String title, String createDay,Integer idCategory) {
-        iBlogRepository.create(title, createDay,idCategory);
+    public void create(String title, String createDay, Integer idCategory) {
+        iBlogRepository.create(title, createDay, idCategory);
     }
 
     @Override
@@ -36,8 +36,8 @@ public class BlogService implements IBlogService {
 
 
     @Override
-    public void update(Blog blog)  {
-        iBlogRepository.update(blog.getTitle(),blog.getCreateDay(),blog.getCategory().getIdCategory(),blog.getId());
+    public void update(Blog blog) {
+        iBlogRepository.update(blog.getTitle(), blog.getCreateDay(), blog.getCategory().getIdCategory(), blog.getId());
     }
 
     @Override

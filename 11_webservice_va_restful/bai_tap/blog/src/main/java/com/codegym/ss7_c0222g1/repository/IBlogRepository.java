@@ -23,7 +23,7 @@ public interface IBlogRepository extends JpaRepository<Blog, Integer> {
     @Query(value = "select * from blog where status_delete = 0", nativeQuery = true)
     List<Blog> findAll();
 
-    @Query(value = "select * from blog where status_delete = 0",nativeQuery = true)
+    @Query(value = "select * from blog where status_delete = 0", nativeQuery = true)
     Page<Blog> findAllBlog(Pageable pageable);
 
     @Modifying
@@ -41,5 +41,5 @@ public interface IBlogRepository extends JpaRepository<Blog, Integer> {
     @Query(value = "update blog set title = :title, create_day = :createDay,id_category = :idCategory where id = :id",
             nativeQuery = true)
     void update(@Param("title") String title, @Param("createDay") String createDay,
-                @Param("idCategory") Integer idCategory,@Param("id") Integer id);
+                @Param("idCategory") Integer idCategory, @Param("id") Integer id);
 }

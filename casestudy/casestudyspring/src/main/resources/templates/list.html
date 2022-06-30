@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Title</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>Customer</title>
+        <link rel="stylesheet" th:href="@{bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{datatables/css/dataTables.bootstrap4.min.css}"/>
     </head>
 <body>
 <h2> Blog</h2>
 <p>
     <a th:href="@{/create}">
-        Add new Blog
+        Add new Customer
     </a>
 </p>
 <p>
@@ -67,4 +69,11 @@
 </div>
 
 </body>
+    <script th:src="@{/jquery/jquery-3.5.1.min.js}"></script>
+    <script th:src="@{/datatables/js/jquery.dataTables.min.js}"></script>
+    <script th:src="@{/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
 </html>

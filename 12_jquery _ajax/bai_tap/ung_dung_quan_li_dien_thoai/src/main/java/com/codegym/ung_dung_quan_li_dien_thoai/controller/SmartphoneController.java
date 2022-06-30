@@ -21,14 +21,6 @@ public class SmartphoneController {
     public ResponseEntity<Smartphone> createSmartphone(@RequestBody Smartphone smartphone) {
         return new ResponseEntity<>(smartphoneService.save(smartphone), HttpStatus.CREATED);
     }
-//    @PostMapping
-//    public ResponseEntity<Smartphone> updateSmartphone(@PathVariable Long id, Smartphone smartphone) {
-//        Optional<Smartphone> smartphoneOptional = smartphoneService.findById(id);
-//        if (!smartphoneOptional.isPresent()) {
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        }
-//        return new ResponseEntity<>(smartphoneService.save(smartphone), HttpStatus.CREATED);
-//    }
 
     @GetMapping
     public ResponseEntity<Iterable<Smartphone>> allPhones() {
@@ -51,6 +43,7 @@ public class SmartphoneController {
         smartphoneService.remove(id);
         return new ResponseEntity<>(smartphoneOptional.get(), HttpStatus.NO_CONTENT);
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<Smartphone> findById(@PathVariable Long id) {
         Optional<Smartphone> smartphoneOptional = smartphoneService.findById(id);

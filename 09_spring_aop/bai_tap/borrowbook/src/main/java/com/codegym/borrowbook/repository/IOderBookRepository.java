@@ -1,6 +1,5 @@
 package com.codegym.borrowbook.repository;
 
-import com.codegym.borrowbook.model.Book;
 import com.codegym.borrowbook.model.OderBook;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

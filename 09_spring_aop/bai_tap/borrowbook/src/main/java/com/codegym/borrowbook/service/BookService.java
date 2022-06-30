@@ -29,6 +29,6 @@ public class BookService implements IBookService {
 
     @Override
     public void returnBook(Book book) {
-        iBookRepository.returnBook(book.getAmount() + 1,book.getIdBook());
+        iBookRepository.returnBook(book.getAmount() + 1, book.getIdBook());
     }
 }

@@ -40,20 +40,22 @@ public class BookController {
         iOderService.create(id, book.getIdBook());
         return "redirect:/book";
     }
+
     @GetMapping("/return")
     public String showReturn(String id, RedirectAttributes redirectAttributes) {
         OderBook orderBook = iOderService.findIdOder(id);
-        if (orderBook != null){
+        if (orderBook != null) {
             Book book = orderBook.getBooks();
             iBookService.returnBook(book);
             iOderService.delete(orderBook);
             redirectAttributes.addFlashAttribute("msg", "Trả sách thành công");
             return "redirect:/book";
-        }else {
+        } else {
             redirectAttributes.addFlashAttribute("msg", "Không có mã mượn sách");
             return "redirect:/book";
         }
     }
+
     @ExceptionHandler(Exception.class)
     public String handlerException() {
         return "error";

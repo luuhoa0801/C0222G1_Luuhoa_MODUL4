@@ -10,7 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Optional;
 
-
 @RestController
 @RequestMapping("/smartphones")
 public class SmartphoneController {
@@ -43,6 +42,7 @@ public class SmartphoneController {
         smartphoneService.remove(id);
         return new ResponseEntity<>(smartphoneOptional.get(), HttpStatus.NO_CONTENT);
     }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<Smartphone> findById(@PathVariable Long id) {

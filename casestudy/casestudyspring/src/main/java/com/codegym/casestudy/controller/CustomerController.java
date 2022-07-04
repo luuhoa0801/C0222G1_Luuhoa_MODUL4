@@ -22,7 +22,7 @@ public class CustomerController {
     public String getShowForm(@RequestParam(name = "page", defaultValue = "0") int page, Model model) {
         Page<Customer> list = iCustomerService.getAll(PageRequest.of(page, 2));
         model.addAttribute("listCustomer",list );
-        return "list";
+        return "list1";
     }
 //    @GetMapping("/create")
 //    public String create(Model model) {

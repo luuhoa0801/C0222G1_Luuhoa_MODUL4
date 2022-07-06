@@ -49,5 +49,4 @@ function getSearchBlog(blog){
     <td> ${blog.statusDelete}</td>
     <td> ${blog.category.content}</td>
 </tr>`
-
 }

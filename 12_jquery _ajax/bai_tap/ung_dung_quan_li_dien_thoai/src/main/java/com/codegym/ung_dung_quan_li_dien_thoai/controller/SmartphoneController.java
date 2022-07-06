@@ -43,7 +43,6 @@ public class SmartphoneController {
         return new ResponseEntity<>(smartphoneOptional.get(), HttpStatus.NO_CONTENT);
     }
 
-
     @GetMapping("/{id}")
     public ResponseEntity<Smartphone> findById(@PathVariable Long id) {
         Optional<Smartphone> smartphoneOptional = smartphoneService.findById(id);

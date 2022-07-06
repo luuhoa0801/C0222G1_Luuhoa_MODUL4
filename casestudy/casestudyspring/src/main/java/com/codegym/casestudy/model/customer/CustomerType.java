@@ -1,5 +1,7 @@
 package com.codegym.casestudy.model.customer;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -9,9 +11,12 @@ public class CustomerType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_type_id")
     private Integer id;
+
     @Column(name = "customer_type_name")
     private String name;
+
     @OneToMany(mappedBy = "customerType")
+    @JsonIgnore
     private Set<Customer> customers;
 
     public CustomerType() {

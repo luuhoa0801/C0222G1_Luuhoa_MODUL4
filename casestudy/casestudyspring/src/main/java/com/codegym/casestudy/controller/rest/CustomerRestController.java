@@ -1,9 +1,12 @@
-package com.codegym.casestudy.controller;
+package com.codegym.casestudy.controller.rest;
 
 import com.codegym.casestudy.model.customer.Customer;
 import com.codegym.casestudy.service.customer.ICustomerService;
 import com.codegym.casestudy.service.customer.ICustomerTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,12 +21,12 @@ public class CustomerRestController {
     @Autowired
     private ICustomerTypeService iCustomerTypeService;
 
-    @GetMapping(value = "list")
+    @GetMapping(value = "/list")
     public ResponseEntity<List<Customer>> allCustomer() {
         return new ResponseEntity<>(iCustomerService.findAll(), HttpStatus.OK);
     }
 
-    @PostMapping(value = "save")
+    @PostMapping(value = "/save")
     public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
         iCustomerService.create(customer);
         return new ResponseEntity<>(customer, HttpStatus.CREATED);

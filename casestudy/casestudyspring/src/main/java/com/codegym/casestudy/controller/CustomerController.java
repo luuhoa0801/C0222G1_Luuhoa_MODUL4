@@ -30,10 +30,10 @@ public class CustomerController {
 
     @GetMapping("/customer")
     public String getShowForm(@RequestParam(name = "page", defaultValue = "0") int page, Model model) {
-        Page<Customer> list = iCustomerService.getAll(PageRequest.of(page, 4));
+        Page<Customer> list = iCustomerService.getAll(PageRequest.of(page, 6));
         model.addAttribute("listCustomer", list);
         model.addAttribute("listCustomerType", iCustomerTypeService.findAllType());
-        return "list";
+        return "/list";
     }
 
     @GetMapping("/{id}/edit")
@@ -41,7 +41,7 @@ public class CustomerController {
         model.addAttribute("CustomerList", iCustomerService.findById(id));
         List<CustomerType> customerTypeList = iCustomerService.customerTypeList();
         model.addAttribute("customerTypeList", customerTypeList);
-        return "edit";
+        return "customer/edit";
     }
 
     @PostMapping("/update")

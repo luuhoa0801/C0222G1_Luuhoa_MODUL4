@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<a href="/customer" style="margin-left: 50px">Trang Customer </a>
+<a href="/employee" style="margin-left: 50px">Trang Employee </a>
 <a href="http://localhost:8080" style="margin-left: 50px">Trang Chủ </a>
 
 <nav class="navbar navbar-light bg-light">
@@ -17,6 +17,7 @@
         <button class="btn btn-outline-success my-2 my-sm-0 search" type="submit" >Search</button>
     </form>
 </nav>
+
 <table id="tableCustomer" class="table table-striped table-bordered"
        border="2" style="border-collapse:  collapse;padding-top: 10px;width: 90%">
     <thead>
@@ -24,31 +25,33 @@
         <th>ID</th>
         <th>Name</th>
         <th>BirthDay</th>
-        <th>Gender</th>
         <th>IdCard</th>
         <th>Phone</th>
         <th>Email</th>
-        <th>Address</th>
+        <th>Salary</th>
         <th>status</th>
-        <th>CustomerType</th>
+        <th>Position</th>
+        <th>EducationDegree</th>
+        <th>Division</th>
         <th>Chỉnh sửa</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="customer,loop : ${listCustomer}">
-        <td th:text="${customer.id}"></td>
-        <td th:text="${customer.name}"></td>
-        <td th:text="${customer.birthday}"></td>
-        <td th:text="${customer.gender}"></td>
-        <td th:text="${customer.id_card}"></td>
-        <td th:text="${customer.phone}"></td>
-        <td th:text="${customer.email}"></td>
-        <td th:text="${customer.address}"></td>
-        <td th:text="${customer.status}"></td>
-        <td th:text="${customer.customerType.name}"></td>
+    <tr th:each="employee,loop : ${ListEmployee}">
+        <td th:text="${employee.id}"></td>
+        <td th:text="${employee.name}"></td>
+        <td th:text="${employee.dateOfBirth}"></td>
+        <td th:text="${employee.id_card}"></td>
+        <td th:text="${employee.phone}"></td>
+        <td th:text="${employee.email}"></td>
+        <td th:text="${employee.salary}"></td>
+        <td th:text="${employee.status}"></td>
+        <td th:text="${employee.position.name}"></td>
+        <td th:text="${employee.educationDegree.name}"></td>
+        <td th:text="${employee.division.name}"></td>
         <td>
             <a th:href="@{{id}/edit(id=${customer.id})}">Edit</a>
-            <a href="#" th:attr="onclick=|customerIndex('${customer.id}','${customer.name}')|"
+            <a href="#" th:attr="onclick=|customerIndex('${employee.id}','${employee.name}')|"
                data-toggle="modal"
                data-target="#delete">
                 Delete
@@ -93,7 +96,7 @@
                         <option value="1">Nam</option>
                         <option value="0">Nữ</option>
                     </select>
-<!--                    <input type="text" class="form-control" placeholder="Enter giới tính" id="gender" >-->
+                    <!--                    <input type="text" class="form-control" placeholder="Enter giới tính" id="gender" >-->
                 </div>
                 <div class="form-group">
                     <label>Chứng minh:</label>
@@ -180,7 +183,7 @@
     };
 
     function customerIndex2() {
-        link = "/customer/delete/" + customerId;
+        link = "/employee/delete/" + customerId;
         window.location.href = link;
     };
 </script>

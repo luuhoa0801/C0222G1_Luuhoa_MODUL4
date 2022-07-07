@@ -1,9 +1,11 @@
 package com.codegym.casestudy.model.employee;
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
-@Entity
-@Table(name = "user")
+import javax.persistence.*;
+import java.util.Set;
+
+@Entity(name = "user")
 public class User {
     @Id
     @Column(name = "username")
@@ -13,6 +15,14 @@ public class User {
 
     @OneToOne(mappedBy = "user")
     private Employee employee;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "user_role",joinColumns = @JoinColumn(name = "user_name"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @JsonBackReference
+    private Set<Role> userRole;
+
+
 
     public User() {
     }

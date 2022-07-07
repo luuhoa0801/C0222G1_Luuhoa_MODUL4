@@ -4,34 +4,35 @@ import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "employee")
+@Entity(name = "employee")
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private  String name;
-    private String date_of_birth;
-    private String id_card;
+    @Column(name = "date_of_birth")
+    private String dateOfBirth;
+    @Column(name = "id_card")
+    private String idCard;
     private String phone;
     private String email;
-    private String salary;
+    private double salary;
 
     @ManyToOne
-    @JoinColumn(name = "position_id", referencedColumnName = "id")
+    @JoinColumn(name = "position_id")
     private Position position;
 
     @ManyToOne
-    @JoinColumn(name = "education_degree_id", referencedColumnName = "id")
+    @JoinColumn(name = "education_degree_id")
     private EducationDegree educationDegree;
 
     @ManyToOne
-    @JoinColumn(name = "division_id", referencedColumnName = "id")
+    @JoinColumn(name = "division_id")
     private Division division;
 
     @OneToOne
-    @JoinColumn(name = "username", referencedColumnName = "username")
+    @JoinColumn(name = "username")
     private User user;
 
     @ColumnDefault("0")
@@ -40,13 +41,13 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(int id, String name, String date_of_birth, String id_card, String phone,
-                    String email, String salary, Position position, EducationDegree educationDegree,
+    public Employee(int id, String name, String dateOfBirth, String idCard, String phone,
+                    String email, double salary, Position position, EducationDegree educationDegree,
                     Division division, User user, int status) {
         this.id = id;
         this.name = name;
-        this.date_of_birth = date_of_birth;
-        this.id_card = id_card;
+        this.dateOfBirth = dateOfBirth;
+        this.idCard = idCard;
         this.phone = phone;
         this.email = email;
         this.salary = salary;
@@ -73,20 +74,20 @@ public class Employee {
         this.name = name;
     }
 
-    public String getDate_of_birth() {
-        return date_of_birth;
+    public String getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setDate_of_birth(String date_of_birth) {
-        this.date_of_birth = date_of_birth;
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
-    public String getId_card() {
-        return id_card;
+    public String getIdCard() {
+        return idCard;
     }
 
-    public void setId_card(String id_card) {
-        this.id_card = id_card;
+    public void setIdCard(String idCard) {
+        this.idCard = idCard;
     }
 
     public String getPhone() {
@@ -105,11 +106,11 @@ public class Employee {
         this.email = email;
     }
 
-    public String getSalary() {
+    public double getSalary() {
         return salary;
     }
 
-    public void setSalary(String salary) {
+    public void setSalary(double salary) {
         this.salary = salary;
     }
 

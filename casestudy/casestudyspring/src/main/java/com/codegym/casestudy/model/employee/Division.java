@@ -5,8 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.util.Set;
 
-@Entity
-@Table(name = "division")
+@Entity(name = "division")
 public class Division {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

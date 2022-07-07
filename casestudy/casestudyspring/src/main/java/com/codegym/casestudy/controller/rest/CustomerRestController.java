@@ -22,8 +22,11 @@ public class CustomerRestController {
     private ICustomerTypeService iCustomerTypeService;
 
     @GetMapping(value = "/list")
-    public ResponseEntity<List<Customer>> allCustomer() {
-        return new ResponseEntity<>(iCustomerService.findAll(), HttpStatus.OK);
+    public ResponseEntity<Page<Customer>> allCustomer(@RequestParam(name = "page", defaultValue = "0") int page) {
+//        return new ResponseEntity<>(iCustomerService.findAll(), HttpStatus.OK);
+            Page<Customer> pageCustomer;
+            pageCustomer = iCustomerService.getAll(PageRequest.of(page, 5));
+            return new ResponseEntity<>(pageCustomer, HttpStatus.OK);
     }
 
     @PostMapping(value = "/save")

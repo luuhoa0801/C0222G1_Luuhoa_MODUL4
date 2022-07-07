@@ -66,14 +66,11 @@ function successHandler() {
                 '    </tr>\n' +
                 '    </thead>\n' +
                 '    <tbody>';
-            for (let i = 0; i < data.length; i++) {
-                content += getCustomer(data[i]);
-
+            for (let i = 0; i < data.content.length; i++) {
+                content += getCustomer(data.content[i]);
             }
             content += `</tbody>`;
             document.getElementById('tableCustomer').innerHTML = content;
-
-
         }
     });
 }
